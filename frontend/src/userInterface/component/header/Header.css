@@ -1,0 +1,340 @@
+/* Header.css */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+  --primary: #000000;       /* Black - Primary color */
+  --secondary: #FFD700;     /* Yellow - Secondary color */
+  --accent: #FFFF00;        /* Brighter yellow - Accent color */
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .6rem;
+    background-color: var(--primary);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    z-index: 100;
+}
+
+.header_logo img {
+    height: 40px;
+    width: 100%;
+    /* transition: transform 0.3s ease; */
+}
+
+/* .header_logo img:hover {
+    transform: scale(1.05);
+} */
+
+/* Hamburger Menu */
+.menu-btn {
+  display: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+}
+
+.menu-btn ion-icon {
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+.header_nav {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.header_nav a {
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.header_nav a:hover {
+    color: var(--secondary);
+}
+
+.header_nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary);
+    transition: width 0.3s ease;
+}
+
+.header_nav a:hover::after {
+    width: 100%;
+}
+
+.header_nav ion-icon {
+    font-size: 1.5rem;
+    color: var(--accent);
+    transition: color 0.3s ease;
+}
+
+.header_nav a:hover ion-icon {
+    color: var(--secondary);
+}
+
+.header_nav span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+}
+
+.header_nav button {
+    background: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    /* border: 2px solid var(--accent) ; */
+    border-radius: 10px;
+    color: var(--accent);
+}
+.header_nav .search{
+  border: 2px solid var(--accent) ;
+}
+
+.header_nav .search:hover {
+    background-color: var(--accent);
+    color: var(--primary);
+}
+
+
+/* Dropdown Wrapper Styles */
+.dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-left: 1rem; /* Spacing from other elements */
+}
+
+/* Dropdown Menu Styles */
+.role-dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 0.5rem;
+  background-color: white;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.dropdown-wrapper:hover .role-dropdown,
+.dropdown-wrapper:focus-within .role-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Dropdown Items */
+.role-dropdown button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  text-align: left;
+  color: #333;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.role-dropdown button:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.role-dropdown button:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.role-dropdown button:hover {
+  background-color: var(--primary);
+  color: var(--accent);
+}
+
+.person-icon-btn :hover {
+  background-color: var(--primary);
+  color: var(--accent);
+}
+
+/* Mobile Menu Adjustments */
+@media (max-width: 768px) {
+  .dropdown-wrapper {
+    margin-left: 0;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .role-dropdown {
+    position: static;
+    width: 100%;
+    margin-top: 0.5rem;
+    box-shadow: none;
+    border: 1px solid #eee;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    display: none; /* Hidden by default on mobile */
+  }
+
+  .header_nav.active .dropdown-wrapper .role-dropdown {
+    display: block; /* Show when mobile menu is active */
+  }
+
+  .role-dropdown button {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* Responsive styles */
+/* Mobile Styles */
+@media (max-width: 400px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .header_nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary);
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 0;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-150%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 99;
+  }
+
+  .header_nav.active {
+    transform: translateY(0);
+  }
+
+  .header_nav a {
+    padding: 0.5rem 1rem;
+  }
+
+  .header_nav button {
+    margin-top: 1rem;
+  }
+}
+
+/* Tablet View (768px and below) */
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 0.6rem 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  /* Show hamburger menu button */
+  .menu-btn {
+    display: block;
+    order: 1; /* Position after logo */
+  }
+
+  /* Keep search button visible */
+  .header_nav span {
+    display: flex;
+    order: 2; /* Position at end */
+    margin-left: auto;
+  }
+
+  /* Hide regular nav links */
+  .header_nav a:not(.login-link) {
+    display: none;
+  }
+
+  /* Show login icon next to menu button */
+  .login-link {
+    display: block;
+    order: 1;
+    margin-right: 1rem;
+  }
+
+  /* Expanded menu styles */
+  .header_nav.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary);
+    padding: 1.5rem;
+    gap: 1.5rem;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  }
+
+  .header_nav.active a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  }
+
+  .header_nav.active a:last-child {
+    border-bottom: none;
+  }
+
+  /* Adjust logo size */
+  .header_logo img {
+    height: 35px;
+  }
+
+  /* Search button adjustments */
+  .header_nav button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Smaller tablets (600px and below) */
+@media screen and (max-width: 600px) {
+  .header {
+    padding: 0.6rem 1rem;
+  }
+  
+  .header_nav.active {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .header_nav.active a {
+    padding: 0.6rem;
+  }
+}
